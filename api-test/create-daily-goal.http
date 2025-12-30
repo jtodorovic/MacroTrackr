@@ -1,0 +1,9 @@
+POST http://localhost:8080/daily-goals
+content-type: application/json
+
+{
+  "caloriesTarget": 2500,
+  "proteinTarget": 120,
+  "carbsTarget": 60,
+  "fatsTarget": 30
+}
