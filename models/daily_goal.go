@@ -41,7 +41,6 @@ type DailyGoalResponse struct {
 	FatsTarget     int32 `json:"fatsTarget"`
 }
 
-// Mapper
 func NewDailyGoalResponse(goal DailyGoal) DailyGoalResponse {
 	return DailyGoalResponse{
 		ID:             goal.ID,
