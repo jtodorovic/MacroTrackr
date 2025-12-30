@@ -2,7 +2,10 @@ package db
 
 import (
 	"database/sql"
+<<<<<<< HEAD
 	"fmt"
+=======
+>>>>>>> 4f93c45182a93b17ab9f44c563f46c481e53a757
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -21,12 +24,16 @@ func InitDB() {
 	DB.SetMaxOpenConns(10)
 	DB.SetMaxIdleConns(5)
 
+<<<<<<< HEAD
 	DB.Exec("PRAGMA foreign_keys = ON;")
 
+=======
+>>>>>>> 4f93c45182a93b17ab9f44c563f46c481e53a757
 	createTables()
 }
 
 func createTables() {
+<<<<<<< HEAD
 	createUsersTableQuery := `
 	CREATE TABLE IF NOT EXISTS users (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,10 +52,26 @@ func createTables() {
 	CREATE TABLE IF NOT EXISTS daily_goals (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		user_id INTEGER NOT NULL,
+=======
+	createUsersTable := `
+	CREATE TABLE IF NOT EXISTS users (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		name TEXT NOT NULL,
+		email TEXT NOT NULL,
+		dob DATETIME NOT NULL,
+		weight INTEGER NOT NULL,
+		gender TEXT NOT NULL
+	)
+	`
+	createGoalsTable := `
+	CREATE TABLE IF NOT EXISTS goals (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+>>>>>>> 4f93c45182a93b17ab9f44c563f46c481e53a757
 		calories_target INTEGER NOT NULL,
 		protein_target INTEGER NOT NULL,
 		carbs_target INTEGER NOT NULL,
 		fats_target INTEGER NOT NULL,
+<<<<<<< HEAD
 		created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (user_id) REFERENCES users(id)
@@ -78,5 +101,19 @@ func createTables() {
 		if err != nil {
 			panic(fmt.Sprintf("Could not create table; error: %v", err))
 		}
+=======
+		user_id INTEGER NOT NULL
+	)
+	`
+
+	_, err := DB.Exec(createUsersTable)
+	if err != nil {
+		panic("Could not create Users table.")
+	}
+
+	_, err2 := DB.Exec(createGoalsTable)
+	if err2 != nil {
+		panic("Could not create Goals table.")
+>>>>>>> 4f93c45182a93b17ab9f44c563f46c481e53a757
 	}
 }
