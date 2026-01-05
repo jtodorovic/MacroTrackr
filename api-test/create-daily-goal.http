@@ -1,5 +1,6 @@
 POST http://localhost:8080/daily-goals
-content-type: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3NjcxOTA4MzUsInVzZXJJZCI6Mn0.DVuoRnp2A_byXOmxZB8Cu3sC0A3TVZWIuUNZbKfbmf8
 
 {
   "caloriesTarget": 2500,

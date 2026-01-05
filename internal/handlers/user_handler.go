@@ -5,8 +5,9 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jtodorovic/macrotrackr/models"
-	"github.com/jtodorovic/macrotrackr/utils"
+	"github.com/jtodorovic/macrotrackr/internal/models"
+	"github.com/jtodorovic/macrotrackr/internal/services"
+	"github.com/jtodorovic/macrotrackr/pkg/auth"
 )
 
 // POST /signup
@@ -18,7 +19,7 @@ func SignUp(context *gin.Context) {
 		return
 	}
 
-	user, err := models.CreateUser(req)
+	user, err := services.CreateUser(req)
 	if err != nil {
 		fmt.Print(err.Error())
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating user."})
@@ -27,7 +28,7 @@ func SignUp(context *gin.Context) {
 
 	context.JSON(http.StatusCreated, gin.H{
 		"message": "User created.",
-		"user":    models.NewUserResponse(*user),
+		"user":    services.NewUserResponse(*user),
 	})
 }
 
@@ -45,7 +46,7 @@ func Login(context *gin.Context) {
 		return
 	}
 
-	token, err := utils.GenerateToken(credentials.Email, credentials.ID)
+	token, err := auth.GenerateToken(credentials.Email, credentials.ID)
 
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not authenticate user"})

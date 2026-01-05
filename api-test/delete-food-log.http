@@ -1,0 +1,2 @@
+DELETE http://localhost:8080/food-logs/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3NjcxODk0OTAsInVzZXJJZCI6Mn0.Iqf_mUmw4B-ukUABITVb0z7m3-ruRF0twOo6EBzO8bM

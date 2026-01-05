@@ -6,22 +6,24 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jtodorovic/macrotrackr/models"
+	"github.com/jtodorovic/macrotrackr/internal/models"
+	"github.com/jtodorovic/macrotrackr/internal/services"
 )
 
 // GET /daily-goals/:user_id
 func GetLatestGoalForUser(context *gin.Context) {
 	userID := context.GetInt64("userID")
 
-	goal, err := models.GetLatestGoalForUser(userID)
+	goal, err := services.GetLatestGoalForUser(userID)
 
+	// maybe return 404 TODO
 	if err != nil {
 		fmt.Print(err.Error())
 		context.JSON(http.StatusInternalServerError, gin.H{"message": fmt.Sprintf("Error fetching goal for user with ID %d", userID)})
 		return
 	}
 
-	context.JSON(http.StatusOK, models.NewDailyGoalResponse(*goal))
+	context.JSON(http.StatusOK, services.NewDailyGoalResponse(*goal))
 }
 
 // POST /daily-goals
@@ -35,14 +37,14 @@ func CreateDailyGoal(context *gin.Context) {
 
 	userID := context.GetInt64("userID")
 
-	goal, err := models.CreateDailyGoal(userID, req)
+	goal, err := services.CreateDailyGoal(userID, req)
 
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating daily goal."})
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"message": "Daily goal created.", "dailyGoal": models.NewDailyGoalResponse(*goal)})
+	context.JSON(http.StatusCreated, gin.H{"message": "Daily goal created.", "dailyGoal": services.NewDailyGoalResponse(*goal)})
 }
 
 // PUT /daily-goals/:id
@@ -54,7 +56,7 @@ func EditDailyGoal(context *gin.Context) {
 		return
 	}
 
-	dailyGoal, err := models.GetDailyGoalByID(ID)
+	dailyGoal, err := services.GetDailyGoalByID(ID)
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Daily goal not found."})
 		return
@@ -80,7 +82,7 @@ func EditDailyGoal(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"message": "Daily goal updated.", "dailyGoal": models.NewDailyGoalResponse(*dailyGoal)})
+	context.JSON(http.StatusOK, gin.H{"message": "Daily goal updated.", "dailyGoal": services.NewDailyGoalResponse(*dailyGoal)})
 }
 
 // DELETE /daily-goals/:id
@@ -91,7 +93,7 @@ func DeleteDailyGoal(context *gin.Context) {
 		return
 	}
 
-	dailyGoal, err := models.GetDailyGoalByID(ID)
+	dailyGoal, err := services.GetDailyGoalByID(ID)
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Daily goal not found."})
 		return

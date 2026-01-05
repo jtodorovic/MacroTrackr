@@ -1,0 +1,8 @@
+PUT http://localhost:8080/daily-goals/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3NjcxMjUwNzUsInVzZXJJZCI6Mn0.U5Q9B57N1F_PAzO17o8P90tr1aXQNpRhuHfkYiM39A0
+
+{
+  "caloriesTarget": 2500,
+  "proteinTarget": 110
+}

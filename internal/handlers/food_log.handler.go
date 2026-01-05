@@ -3,33 +3,51 @@ package handlers
 import (
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jtodorovic/macrotrackr/models"
+	"github.com/jtodorovic/macrotrackr/internal/models"
+	"github.com/jtodorovic/macrotrackr/internal/services"
 )
 
 // POST /food-logs
-func CreateFoodLog(context *gin.Context) {
-	var foodLog models.FoodLog
+// factory function that returns handlerFunc
+func CreateFoodLog(c *gin.Context) {
+	var req models.CreateFoodLogFromAPIRequest
 
-	err := context.ShouldBindJSON(&foodLog)
-
-	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Error parsing request body."})
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "invalid request body",
+		})
 		return
 	}
 
-	userID := context.GetInt64("userID")
-	foodLog.UserID = userID
-
-	err = foodLog.Save()
-
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating food log."})
+	req.Food = strings.TrimSpace(req.Food)
+	if req.Food == "" || req.Weight <= 0 {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "food and weight are required",
+		})
 		return
 	}
 
-	context.JSON(http.StatusCreated, gin.H{"message": "Food log created.", "foodLog": foodLog})
+	food, err := services.FetchNutrition(req.Food)
+	if err != nil {
+		c.JSON(http.StatusBadGateway, gin.H{
+			"error": "nutrition service unavailable",
+		})
+		return
+	}
+
+	macros := models.ExtractMacros(food, req.Weight)
+
+	c.JSON(http.StatusOK, gin.H{
+		"food":     food.Description,
+		"weight":   req.Weight,
+		"calories": macros.Calories,
+		"protein":  macros.Protein,
+		"carbs":    macros.Carbs,
+		"fat":      macros.Fats,
+	})
 }
 
 // PUT /food-logs/:id
@@ -40,7 +58,7 @@ func EditFoodLog(context *gin.Context) {
 		return
 	}
 
-	foodLog, err := models.FindFoodLogByID(ID)
+	foodLog, err := services.FindFoodLogByID(ID)
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Food log not found."})
 		return
@@ -51,17 +69,16 @@ func EditFoodLog(context *gin.Context) {
 		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not authorized to update food log."})
 	}
 
-	var updatedFood models.FoodLog
-	err = context.ShouldBindJSON(&updatedFood)
-	if err != nil {
+	var req models.UpdateFoodLogRequest
+
+	if err = context.ShouldBindJSON(&req); err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Error parsing request body."})
 		return
 	}
 
-	updatedFood.ID = ID // has to be set because our req body doesn't contain ID
+	foodLog.ApplyUpdate(req)
 
-	err = updatedFood.Update()
-	if err != nil {
+	if err := foodLog.Update(); err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error updating food log."})
 		return
 	}
@@ -77,7 +94,7 @@ func DeleteFoodLog(context *gin.Context) {
 		return
 	}
 
-	foodLog, err := models.FindFoodLogByID(ID)
+	foodLog, err := services.FindFoodLogByID(ID)
 	if err != nil {
 		context.JSON(http.StatusNotFound, gin.H{"message": "Food log not found."})
 		return
@@ -86,10 +103,10 @@ func DeleteFoodLog(context *gin.Context) {
 	userID := context.GetInt64("userID")
 	if foodLog.UserID != userID {
 		context.JSON(http.StatusUnauthorized, gin.H{"message": "Not authorized to delete food log."})
+		return
 	}
 
-	err = foodLog.Delete()
-	if err != nil {
+	if err = foodLog.Delete(); err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Food log could not be deleted."})
 		return
 	}

@@ -4,8 +4,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/jtodorovic/macrotrackr/db"
-	"github.com/jtodorovic/macrotrackr/utils"
+	"github.com/jtodorovic/macrotrackr/internal/db"
+	"github.com/jtodorovic/macrotrackr/internal/security"
 )
 
 type User struct {
@@ -21,7 +21,6 @@ type User struct {
 	UpdatedAt time.Time
 }
 
-// DTOs
 type CreateUserRequest struct {
 	Name     string    `json:"name" binding:"required"`
 	Email    string    `json:"email" binding:"required,email"`
@@ -50,85 +49,10 @@ type UserResponse struct {
 	Gender string    `json:"gender"`
 }
 
-func NewUserResponse(u User) UserResponse {
-	return UserResponse{
-		ID:     u.ID,
-		Name:   u.Name,
-		Email:  u.Email,
-		DOB:    u.DOB,
-		Weight: u.Weight,
-		Height: u.Height,
-		Gender: u.Gender,
-	}
-}
-
 type UserCredentials struct {
 	ID       int64  `json:"id"`
 	Email    string `json:"email" binding:"required,email"`
 	Password string `json:"password" binding:"required"`
-}
-
-// func (u *User) ApplyUpdate(req UpdateUserRequest) error {
-// 	if req.Name != nil {
-// 		u.Name = *req.Name
-// 	}
-// 	if req.DOB != nil {
-// 		u.DOB = *req.DOB
-// 	}
-// 	if req.Weight != nil {
-// 		if *req.Weight <= 0 {
-// 			return errors.New("weight must be positive")
-// 		}
-// 		u.Weight = *req.Weight
-// 	}
-// 	if req.Height != nil {
-// 		if *req.Height <= 0 {
-// 			return errors.New("height must be positive")
-// 		}
-// 		u.Height = *req.Height
-// 	}
-// 	if req.Gender != nil {
-// 		u.Gender = *req.Gender
-// 	}
-// 	return nil
-// }
-
-func CreateUser(req CreateUserRequest) (*User, error) {
-	hashedPassword, err := utils.HashPassword(req.Password)
-	if err != nil {
-		return nil, err
-	}
-
-	query := `
-		INSERT INTO users (name, email, password, dob, weight, height, gender)
-		VALUES (?, ?, ?, ?, ?, ?, ?)`
-
-	stmt, err := db.DB.Prepare(query)
-	if err != nil {
-		return nil, err
-	}
-	defer stmt.Close()
-
-	result, err := stmt.Exec(req.Name, req.Email, hashedPassword, req.DOB, req.Weight, req.Height, req.Gender)
-
-	if err != nil {
-		return nil, err
-	}
-
-	id, err := result.LastInsertId()
-	if err != nil {
-		return nil, err
-	}
-
-	return &User{
-		ID:     id,
-		Name:   req.Name,
-		Email:  req.Email,
-		DOB:    req.DOB,
-		Weight: req.Weight,
-		Height: req.Height,
-		Gender: req.Gender,
-	}, nil
 }
 
 func (uc *UserCredentials) Validate() error {
@@ -143,7 +67,7 @@ func (uc *UserCredentials) Validate() error {
 		return errors.New("Invalid credentials")
 	}
 
-	passwordIsValid := utils.ComparePassword(uc.Password, retrievedPassword)
+	passwordIsValid := security.ComparePassword(uc.Password, retrievedPassword)
 
 	if !passwordIsValid {
 		return errors.New("Invalid credentials")

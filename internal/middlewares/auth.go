@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jtodorovic/macrotrackr/utils"
+	"github.com/jtodorovic/macrotrackr/pkg/auth"
 )
 
 func Authenticate(context *gin.Context) {
@@ -24,7 +24,7 @@ func Authenticate(context *gin.Context) {
 
 	token := strings.TrimPrefix(authHeader, bearerPrefix)
 
-	userID, err := utils.VerifyToken(token)
+	userID, err := auth.VerifyToken(token)
 
 	if err != nil {
 		context.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "Unauthorized"})

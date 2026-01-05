@@ -1,0 +1,8 @@
+POST http://localhost:8080/food-logs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3Njc2MTA4NTEsInVzZXJJZCI6Mn0.nZkJ1ishQ2HJBzgNw3cKYxdVv3oBppAoyddfGeDkLFM
+
+{
+  "food": "Eggs",
+  "weight": 100
+}
