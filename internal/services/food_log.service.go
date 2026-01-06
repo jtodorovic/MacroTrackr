@@ -7,17 +7,14 @@ import (
 	"github.com/jtodorovic/macrotrackr/internal/models"
 )
 
-type FoodLogService struct {
-	nutritionService *NutritionService
-}
-
-func NewFoodLogService(nutritionService *NutritionService) *FoodLogService {
-	return &FoodLogService{
-		nutritionService: nutritionService,
+func CreateFoodLog(userID int64, req models.CreateFoodLogByWeightRequest) (*models.FoodLog, error) {
+	food, err := FetchNutrition(req.Food)
+	if err != nil {
+		return nil, err
 	}
-}
 
-func CreateFoodLog(userID int64, req models.CreateFoodLogRequest) (*models.FoodLog, error) {
+	macros := ExtractMacros(food, req.Weight)
+
 	query := `
 	INSERT INTO food_logs(user_id, name, calories, protein, carbs, fats, meal_type)
 	VALUES (?,?,?,?,?,?,?)
@@ -30,7 +27,7 @@ func CreateFoodLog(userID int64, req models.CreateFoodLogRequest) (*models.FoodL
 
 	defer stmt.Close()
 
-	result, err := stmt.Exec(userID, req.Name, req.Calories, req.Protein, req.Carbs, req.Fats, req.MealType)
+	result, err := stmt.Exec(userID, req.Food, macros.Calories, macros.Protein, macros.Carbs, macros.Fats, req.MealType)
 	if err != nil {
 		return nil, err
 	}

@@ -1,76 +1,56 @@
 package services
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
-	"net/url"
-	"os"
-	"time"
+	"math"
 
-	"github.com/jtodorovic/macrotrackr/internal/integrations/nutrition"
+	"github.com/jtodorovic/macrotrackr/internal/integrations/usda"
 	"github.com/jtodorovic/macrotrackr/internal/models"
 )
 
-type NutritionService struct {
-	client *nutrition.CalorieNinjasClient
-}
+const (
+	NutrientCalories = 1008
+	NutrientProtein  = 1003
+	NutrientCarbs    = 1005
+	NutrientFat      = 1004
+)
 
-func NewNutritionService(client *nutrition.CalorieNinjasClient) *NutritionService {
-	return &NutritionService{
-		client: client,
-	}
-}
-
-type USDASearchResponse struct {
-	Foods []models.USDAFood `json:"foods"`
-}
-
-func FetchNutrition(food string) (*models.USDAFood, error) {
-	apiKey := os.Getenv("USDA_API_KEY")
-	if apiKey == "" {
-		return nil, fmt.Errorf("USDA_API_KEY not set")
-	}
-
-	params := url.Values{}
-	params.Set("query", food)
-	params.Set("pageSize", "1")
-	params.Set("api_key", apiKey)
-
-	req, err := http.NewRequest(
-		"GET",
-		"https://api.nal.usda.gov/fdc/v1/foods/search?"+params.Encode(),
-		nil,
-	)
+func FetchNutrition(food string) (*usda.Food, error) {
+	result, err := usda.SearchFood(food, 1)
 	if err != nil {
-		return nil, err
-	}
-
-	client := &http.Client{Timeout: 10 * time.Second}
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf(
-			"USDA error (%d): %s",
-			resp.StatusCode,
-			string(body),
-		)
-	}
-
-	var result USDASearchResponse
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
 		return nil, err
 	}
 
 	if len(result.Foods) == 0 {
-		return nil, fmt.Errorf("no food found")
+		return nil, fmt.Errorf("No food found")
 	}
 
 	return &result.Foods[0], nil
+}
+
+func ExtractMacros(food *usda.Food, weight int32) models.Macros {
+	var m models.Macros
+
+	for _, n := range food.Nutrients {
+		switch n.NutrientID {
+		case NutrientCalories:
+			m.Calories = int32(math.Round(n.Value))
+		case NutrientProtein:
+			m.Protein = int32(math.Round(n.Value))
+		case NutrientCarbs:
+			m.Carbs = int32(math.Round(n.Value))
+		case NutrientFat:
+			m.Fats = int32(math.Round(n.Value))
+		}
+	}
+
+	// USDA values are per 100g
+	factor := weight / 100.0
+
+	return models.Macros{
+		Calories: m.Calories * factor,
+		Protein:  m.Protein * factor,
+		Carbs:    m.Carbs * factor,
+		Fats:     m.Fats * factor,
+	}
 }

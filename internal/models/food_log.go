@@ -28,9 +28,10 @@ type CreateFoodLogRequest struct {
 	MealType string `json:"mealType" binding:"required"`
 }
 
-type CreateFoodLogFromAPIRequest struct {
-	Food   string `json:"food" binding:"required"`
-	Weight int    `json:"weight" binding:"required"`
+type CreateFoodLogByWeightRequest struct {
+	Food     string `json:"food" binding:"required"`
+	Weight   int32  `json:"weight" binding:"required"`
+	MealType string `json:"mealType" binding:"required"`
 }
 
 type UpdateFoodLogRequest struct {

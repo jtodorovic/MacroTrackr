@@ -4,10 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jtodorovic/macrotrackr/internal/handlers"
 	"github.com/jtodorovic/macrotrackr/internal/middlewares"
-	"github.com/jtodorovic/macrotrackr/internal/services"
 )
 
-func RegisterRoutes(server *gin.Engine, foodLogService *services.FoodLogService) {
+func RegisterRoutes(server *gin.Engine) {
 
 	// Auth & User Management
 	server.POST("/signup", handlers.SignUp) // DONE

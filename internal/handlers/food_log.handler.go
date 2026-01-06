@@ -11,43 +11,33 @@ import (
 )
 
 // POST /food-logs
-// factory function that returns handlerFunc
-func CreateFoodLog(c *gin.Context) {
-	var req models.CreateFoodLogFromAPIRequest
+func CreateFoodLog(context *gin.Context) {
+	var req models.CreateFoodLogByWeightRequest
 
-	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "invalid request body",
+	if err := context.ShouldBindJSON(&req); err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid request body",
 		})
 		return
 	}
 
 	req.Food = strings.TrimSpace(req.Food)
 	if req.Food == "" || req.Weight <= 0 {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "food and weight are required",
+		context.JSON(http.StatusBadRequest, gin.H{
+			"error": "Food and weight are required",
 		})
 		return
 	}
 
-	food, err := services.FetchNutrition(req.Food)
+	userID := context.GetInt64("userID")
+
+	foodLog, err := services.CreateFoodLog(userID, req)
 	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{
-			"error": "nutrition service unavailable",
-		})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating food log."})
 		return
 	}
 
-	macros := models.ExtractMacros(food, req.Weight)
-
-	c.JSON(http.StatusOK, gin.H{
-		"food":     food.Description,
-		"weight":   req.Weight,
-		"calories": macros.Calories,
-		"protein":  macros.Protein,
-		"carbs":    macros.Carbs,
-		"fat":      macros.Fats,
-	})
+	context.JSON(http.StatusOK, gin.H{"message": "Food log created.", "foodLog": foodLog})
 }
 
 // PUT /food-logs/:id
