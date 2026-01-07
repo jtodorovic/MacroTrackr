@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -10,9 +11,14 @@ import (
 var DB *sql.DB
 
 func InitDB() {
+	dbPath := os.Getenv("SQLITE_PATH")
+	if dbPath == "" {
+		dbPath = "./macrotrackr.db" // local fallback
+	}
+
 	var err error
 
-	DB, err = sql.Open("sqlite3", "api.db")
+	DB, err = sql.Open("sqlite3", dbPath)
 
 	if err != nil {
 		panic("Could not connect to the database.")

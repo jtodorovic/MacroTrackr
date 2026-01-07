@@ -3,7 +3,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3Njc3MTMyODcsInVzZXJJZCI6Mn0.Km_4xI-MET1JY8MkLJUVYJZOyjhHErAlp5pTzs0bNQI
 
 {
-  "food": "Chicken breast",
+  "food": "spinach",
   "weight": 300,
   "mealType": "lunch"
 }
