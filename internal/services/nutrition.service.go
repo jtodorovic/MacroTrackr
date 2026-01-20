@@ -18,6 +18,7 @@ const (
 func FetchNutrition(food string) (*usda.Food, error) {
 	result, err := usda.SearchFood(food, 1)
 	if err != nil {
+		fmt.Print(err.Error())
 		return nil, err
 	}
 

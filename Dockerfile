@@ -22,6 +22,11 @@ RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o app ./cmd/api
 # runtime stage
 FROM debian:bookworm-slim
 
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && update-ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY --from=builder /app/app .

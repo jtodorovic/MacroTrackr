@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/jtodorovic/macrotrackr/internal/db"
@@ -9,7 +10,10 @@ import (
 
 func CreateFoodLog(userID int64, req models.CreateFoodLogByWeightRequest) (*models.FoodLog, error) {
 	food, err := FetchNutrition(req.Food)
+	fmt.Print(food)
 	if err != nil {
+		fmt.Print(err.Error())
+
 		return nil, err
 	}
 

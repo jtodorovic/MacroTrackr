@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -33,6 +34,7 @@ func CreateFoodLog(context *gin.Context) {
 
 	foodLog, err := services.CreateFoodLog(userID, req)
 	if err != nil {
+		fmt.Print(err.Error())
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Error creating food log."})
 		return
 	}
