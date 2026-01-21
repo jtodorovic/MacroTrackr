@@ -29,7 +29,7 @@ func RegisterRoutes(server *gin.Engine) {
 	authenticated.DELETE("/food-logs/:id", handlers.DeleteFoodLog) // DONE
 
 	// Macros Intake Summary
-	authenticated.GET("/summary/today", handlers.GetTodaysSummary) // DONE
+	// authenticated.GET("/summary/:userID/today", handlers.GetTodaysSummary) // DONE
 	// api.GET("/summary/week", handlers.GetWeeklySummary) // cron job
 	// api.GET("/summary/month", handlers.GetMonthlySummary) // cron job
 }
