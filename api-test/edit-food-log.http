@@ -1,0 +1,10 @@
+PUT http://localhost:8080/food-logs/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvZG9yb3ZpY2RyYWdvMUBnbWFpbC5jb20iLCJleHAiOjE3NjcxODkxMjQsInVzZXJJZCI6Mn0._G18nSNMKoBdT3Ok3nFigodckIW9x_IMdwXjA_eVVy0
+
+{
+  "name": "Oatmeal 2",
+  "calories": 1000,
+  "protein": 120,
+  "mealType": "breakfast"
+}

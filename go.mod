@@ -4,6 +4,25 @@ go 1.25.0
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
+	github.com/aws/aws-lambda-go v1.52.0 // indirect
+	github.com/aws/aws-sdk-go-v2 v1.41.1 // indirect
+	github.com/aws/aws-sdk-go-v2/config v1.32.7 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.19.7 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.20.30 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.17 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.4.17 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.7.17 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/ini v1.8.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.53.6 // indirect
+	github.com/aws/aws-sdk-go-v2/service/dynamodbstreams v1.32.10 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/endpoint-discovery v1.11.17 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.13.17 // indirect
+	github.com/aws/aws-sdk-go-v2/service/signin v1.0.5 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.30.9 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.35.13 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sts v1.41.6 // indirect
+	github.com/aws/smithy-go v1.24.0 // indirect
 	github.com/bytedance/sonic v1.14.0 // indirect
 	github.com/bytedance/sonic/loader v0.3.0 // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
@@ -16,6 +35,7 @@ require (
 	github.com/go-sql-driver/mysql v1.9.3 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/goccy/go-yaml v1.18.0 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
@@ -33,13 +53,13 @@ require (
 	github.com/ugorji/go/codec v1.3.0 // indirect
 	go.uber.org/mock v0.5.0 // indirect
 	golang.org/x/arch v0.20.0 // indirect
-	golang.org/x/crypto v0.42.0 // indirect
-	golang.org/x/mod v0.28.0 // indirect
-	golang.org/x/net v0.44.0 // indirect
-	golang.org/x/sync v0.17.0 // indirect
-	golang.org/x/sys v0.36.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
-	golang.org/x/tools v0.37.0 // indirect
+	golang.org/x/crypto v0.46.0 // indirect
+	golang.org/x/mod v0.30.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/text v0.32.0 // indirect
+	golang.org/x/tools v0.39.0 // indirect
 	google.golang.org/protobuf v1.36.9 // indirect
 	gorm.io/driver/mysql v1.6.0 // indirect
 	gorm.io/gorm v1.31.0 // indirect

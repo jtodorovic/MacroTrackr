@@ -1,0 +1,12 @@
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{
+  "name": "Jovana",
+  "email": "todorovicdrago1@gmail.com",
+  "dob": "1997-06-05T15:04:05Z",
+  "weight": 60,
+  "height": 170,
+  "gender": "female",
+  "password": "Jovana1"
+}

@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: macrotrackr-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SQLITE_PATH=/data/macrotrackr.db
+      - USDA_API_KEY=${USDA_API_KEY}
+    volumes:
+      - sqlite_data:/data
+
+volumes:
+  sqlite_data:
