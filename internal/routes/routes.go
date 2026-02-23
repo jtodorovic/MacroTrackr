@@ -9,27 +9,29 @@ import (
 func RegisterRoutes(server *gin.Engine) {
 
 	// Auth & User Management
-	server.POST("/signup", handlers.SignUp) // DONE
-	server.POST("/login", handlers.Login)   // DONE
-	// server.PUT("/users/:id", handlers.EditUser) // TODO
+	server.POST("/signup", handlers.SignUp)
+	server.POST("/login", handlers.Login)
 
 	// grouping authenticated routes
 	authenticated := server.Group("/")
 	authenticated.Use(middlewares.Authenticate)
 
 	// Daily Macros Goals
-	authenticated.POST("/daily-goals", handlers.CreateDailyGoal)            // DONE
-	authenticated.GET("/daily-goals/latest", handlers.GetLatestGoalForUser) // DONE
-	authenticated.PUT("/daily-goals/:id", handlers.EditDailyGoal)           // DONE
-	authenticated.DELETE("/daily-goals/:id", handlers.DeleteDailyGoal)      // DONE
+	authenticated.POST("/daily-goals", handlers.CreateDailyGoal)
+	authenticated.GET("/daily-goals/latest", handlers.GetLatestGoalForUser)
+	authenticated.PUT("/daily-goals/:id", handlers.EditDailyGoal)
+	authenticated.DELETE("/daily-goals/:id", handlers.DeleteDailyGoal)
 
 	// Entering Daily Meals - Food Logs
-	authenticated.POST("/food-logs", handlers.CreateFoodLog)       // DONE
-	authenticated.PUT("/food-logs/:id", handlers.EditFoodLog)      // DONE
-	authenticated.DELETE("/food-logs/:id", handlers.DeleteFoodLog) // DONE
+	authenticated.POST("/food-logs", handlers.CreateFoodLog)
+	authenticated.PUT("/food-logs/:id", handlers.EditFoodLog)
+	authenticated.DELETE("/food-logs/:id", handlers.DeleteFoodLog)
+
+	// Generating Recipe - AI
+	authenticated.POST("/generate-recipe", handlers.RecipeHandler)
 
 	// Macros Intake Summary
-	// authenticated.GET("/summary/:userID/today", handlers.GetTodaysSummary) // DONE
-	// api.GET("/summary/week", handlers.GetWeeklySummary) // cron job
-	// api.GET("/summary/month", handlers.GetMonthlySummary) // cron job
+	// authenticated.GET("/summary/:userID/today", handlers.GetTodaysSummary)
+	// api.GET("/summary/week", handlers.GetWeeklySummary) // TODO: cron job
+	// api.GET("/summary/month", handlers.GetMonthlySummary) // TODO: cron job
 }

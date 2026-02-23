@@ -3,12 +3,14 @@ package auth
 import (
 	"errors"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-const secretKey = "supersecret" // TODO move to config
+var secretKey = os.Getenv("JWT_SECRET_KEY")
+
 const tokenExpirationInHours = 2
 
 func GenerateToken(email string, userID int64) (string, error) {
