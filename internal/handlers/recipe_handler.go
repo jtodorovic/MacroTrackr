@@ -28,8 +28,6 @@ func RecipeHandler(context *gin.Context) {
 
 	recipe, err := ai.GenerateRecipe(req.Ingredients, req.Goal)
 
-	fmt.Print(recipe)
-
 	if err != nil {
 		fmt.Print(err)
 		context.JSON(http.StatusServiceUnavailable, gin.H{
