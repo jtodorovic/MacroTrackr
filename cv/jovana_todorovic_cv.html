@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jovana Todorovic CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f3f4f6;
+      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9.15pt;
+      line-height: 1.29;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 12mm 13mm 11mm;
+      background: #ffffff;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    header {
+      border-bottom: 1.5pt solid #111827;
+      padding-bottom: 5mm;
+      margin-bottom: 5mm;
+    }
+
+    h1 {
+      margin: 0;
+      color: #111827;
+      font-size: 23pt;
+      font-weight: 700;
+      letter-spacing: 0.2pt;
+    }
+
+    .role {
+      margin-top: 1mm;
+      color: #374151;
+      font-size: 12.5pt;
+      font-weight: 700;
+    }
+
+    .summary {
+      margin-top: 4mm;
+      max-width: 178mm;
+      color: #374151;
+      font-size: 9.6pt;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2mm 7mm;
+      margin-top: 3.5mm;
+      color: #374151;
+      font-size: 8.8pt;
+    }
+
+    .contact span {
+      white-space: nowrap;
+    }
+
+    section {
+      margin-top: 4.4mm;
+    }
+
+    h2 {
+      margin: 0 0 2.2mm;
+      color: #111827;
+      font-size: 10.5pt;
+      font-weight: 800;
+      letter-spacing: 1.1pt;
+      text-transform: uppercase;
+      border-bottom: 0.9pt solid #d1d5db;
+      padding-bottom: 1.1mm;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5mm;
+      margin-top: 2.4mm;
+    }
+
+    .skill {
+      border: 0.55pt solid #cbd5e1;
+      border-radius: 2mm;
+      background: #f8fafc;
+      color: #26313f;
+      padding: 0.8mm 1.8mm;
+      font-size: 8.35pt;
+      white-space: nowrap;
+    }
+
+    .item {
+      margin-bottom: 3.5mm;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 6mm;
+      align-items: baseline;
+      margin-bottom: 0.8mm;
+    }
+
+    h3 {
+      margin: 0;
+      color: #111827;
+      font-size: 10.1pt;
+      font-weight: 800;
+    }
+
+    .meta {
+      color: #4b5563;
+      font-size: 8.45pt;
+      white-space: nowrap;
+    }
+
+    .company,
+    .institution {
+      margin: 0.3mm 0 1.1mm;
+      color: #374151;
+      font-weight: 700;
+      font-size: 9.25pt;
+    }
+
+    ul {
+      margin: 0.7mm 0 0 4.7mm;
+      padding: 0;
+    }
+
+    li {
+      margin: 0 0 0.75mm;
+      padding-left: 0.6mm;
+    }
+
+    .compact li {
+      margin-bottom: 0.45mm;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8mm;
+    }
+
+    .project-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 4mm;
+      align-items: baseline;
+      margin-bottom: 0.6mm;
+    }
+
+    .project-title strong {
+      color: #111827;
+      font-size: 9.5pt;
+    }
+
+    .minor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm 9mm;
+    }
+
+    .minor {
+      margin-bottom: 1.7mm;
+    }
+
+    .minor strong {
+      display: block;
+      color: #111827;
+      font-size: 9pt;
+    }
+
+    .minor span {
+      color: #4b5563;
+      font-size: 8.45pt;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Jovana Todorović</h1>
+      <div class="role">Back-end Software Engineer</div>
+      <p class="summary">
+        Master of Information Systems graduate with 5.5 years of back-end engineering experience, specializing in distributed systems and microservices. Experienced in designing, developing, and operating production-grade services using Node.js, NestJS, Go, MongoDB, and PostgreSQL. Strong focus on scalability, reliability, observability, API design, and system ownership.
+      </p>
+      <div class="contact">
+        <span>todorovicdrago1@gmail.com</span>
+        <span>+381631636842</span>
+        <span>Belgrade, Serbia</span>
+        <span>linkedin.com/in/jovana-todorović-6233901b1</span>
+        <span>github.com/jtodorovic</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill">JavaScript</span>
+        <span class="skill">TypeScript</span>
+        <span class="skill">Go</span>
+        <span class="skill">Python</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">NestJS</span>
+        <span class="skill">Gin</span>
+        <span class="skill">Express</span>
+        <span class="skill">FastAPI</span>
+        <span class="skill">MongoDB</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">Redis</span>
+        <span class="skill">DynamoDB</span>
+        <span class="skill">Mongoose</span>
+        <span class="skill">TypeORM</span>
+        <span class="skill">BullMQ</span>
+        <span class="skill">GraphQL</span>
+        <span class="skill">Docker</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">AWS ECS</span>
+        <span class="skill">AWS ECR</span>
+        <span class="skill">AWS Lambda</span>
+        <span class="skill">AWS CloudWatch</span>
+        <span class="skill">S3</span>
+        <span class="skill">MinIO</span>
+        <span class="skill">Azure Blob</span>
+        <span class="skill">Prometheus</span>
+        <span class="skill">Grafana</span>
+        <span class="skill">Loki</span>
+        <span class="skill">Sentry</span>
+        <span class="skill">Distributed Tracing</span>
+        <span class="skill">JWT</span>
+        <span class="skill">Okta</span>
+        <span class="skill">Git</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <article class="item">
+        <div class="item-head">
+          <h3>Back-end Software Engineer</h3>
+          <span class="meta">09/2023 - Present</span>
+        </div>
+        <div class="company">ThinkIT / Goin'</div>
+        <ul>
+          <li>Developed and maintained a Node.js and Go microservices backend (6 services) supporting approximately 200k active users with high reliability and scalability.</li>
+          <li>Designed and implemented authentication and identity management features, including JWT-based authentication, social login providers (Google, Apple, Facebook, Microsoft Azure), Okta integration, email verification, phone verification, and SMS-based two-factor authentication (2FA).</li>
+          <li>Designed event-driven workflows and background processing pipelines using BullMQ for notifications, user engagement, and email automation.</li>
+          <li>Optimized MongoDB aggregations and scheduled workloads, significantly reducing execution time and database load.</li>
+          <li>Implemented observability using Prometheus, Grafana, Loki, and Sentry, including distributed tracing across microservices, enabling proactive monitoring, performance analysis, and faster incident response.</li>
+          <li>Built and maintained CI/CD pipelines using GitLab CI and Docker.</li>
+          <li>Delivered AI-powered chat automation and analytics features and designed a Go-based achievement tracking service.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-head">
+          <h3>Back-end Software Engineer</h3>
+          <span class="meta">01/2021 - 09/2023</span>
+        </div>
+        <div class="company">Everseen d.o.o.</div>
+        <ul>
+          <li>Developed and maintained the back-end architecture of a data-intensive web application using NestJS, focusing on efficient data handling and performance optimization.</li>
+          <li>Designed and implemented RESTful and GraphQL APIs as part of a microservices architecture.</li>
+          <li>Implemented complex database queries, ETLs and migrations in MongoDB and PostgreSQL, handling over 1 million documents without data loss.</li>
+          <li>Integrated third-party storage services such as MinIO S3 and Azure Blob, for enhanced data management and scalability.</li>
+          <li>Monitored and optimized API calls, resulting in significant latency improvement.</li>
+          <li>Wrote unit tests using Jest.</li>
+          <li>Worked with containerized applications deployed on Kubernetes, assisting with deployment verification, troubleshooting, log analysis, and environment configuration.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <main class="page">
+    <section>
+      <h2>Education</h2>
+      <div class="two-col">
+        <article class="item">
+          <div class="item-head">
+            <h3>Master Studies</h3>
+            <span class="meta">10/2020 - 07/2022</span>
+          </div>
+          <div class="institution">Faculty of Organizational Sciences, University of Belgrade</div>
+          <div class="meta">GPA: 10.00</div>
+        </article>
+        <article class="item">
+          <div class="item-head">
+            <h3>Bachelor Studies</h3>
+            <span class="meta">10/2016 - 09/2020</span>
+          </div>
+          <div class="institution">Faculty of Organizational Sciences, University of Belgrade</div>
+          <div class="meta">GPA: 9.86</div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Personal Projects</h2>
+      <article class="item">
+        <div class="project-title">
+          <strong>MacroTrackr</strong>
+          <span class="meta">2025 - Present</span>
+        </div>
+        <ul class="compact">
+          <li>Designed and built a back-end service for tracking macros intake using Go (Gin framework).</li>
+          <li>Containerized the application using Docker and deployed it to AWS ECS (Fargate).</li>
+          <li>Integrated AWS services: ECR for container registry, CloudWatch for centralized logging, Lambda for serverless routes, and DynamoDB for scalable data storage.</li>
+          <li>Implemented a hybrid architecture combining REST endpoints with serverless functions.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="project-title">
+          <strong>MacroTrackr-AI</strong>
+          <span class="meta">2025 - Present</span>
+        </div>
+        <ul class="compact">
+          <li>Designed and implemented an AI-powered back-end service in Python using FastAPI.</li>
+          <li>Integrated and evaluated multiple open-source LLM models, benchmarking performance and response quality to identify the optimal model for CPU-only execution environments.</li>
+          <li>Implemented intelligent Redis-based caching for LLM responses to reduce repeated inference cost and improve response times.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="project-title">
+          <strong>Multi-layer Neural Network Implementation</strong>
+          <span class="meta">2025 - Present</span>
+        </div>
+        <ul class="compact">
+          <li>Implemented a custom multi-layer neural network from scratch; experimented with various hyperparameters including learning rate, number of layers, number of neurons per layer, and batch size.</li>
+          <li>Tested different activation functions (ReLU, Sigmoid, Tanh) and analyzed their impact on convergence and performance.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="project-title">
+          <strong>Car Center</strong>
+          <span class="meta">2020 - 2022</span>
+        </div>
+        <ul class="compact">
+          <li>Independently analyzed real-world documentation and workflows, translating business processes into a structured software system and domain model; designed the overall system architecture and relational database schema.</li>
+          <li>Implemented Node.js (Express) back-end and a hybrid front-end application using Angular and Ionic.</li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="project-title">
+          <strong>Geniefy - Travel Planner</strong>
+          <span class="meta">2020</span>
+        </div>
+        <ul class="compact">
+          <li>Participated in end-to-end system design, including application architecture, data modeling, and feature definition for a startup concept application.</li>
+          <li>Designed and implemented a relational SQL database schema, ensuring data consistency and efficient querying.</li>
+          <li>Implemented Node.js (Express) back-end and a hybrid front-end application using Angular and Ionic.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Honor Awards</h2>
+      <div class="minor-grid">
+        <div class="minor">
+          <strong>Best Students of the Generation (2017)</strong>
+          <span>Faculty of Organizational Sciences</span>
+        </div>
+        <div class="minor">
+          <strong>Best Students of the Generation (2018)</strong>
+          <span>Faculty of Organizational Sciences</span>
+        </div>
+        <div class="minor">
+          <strong>Best Students of the Generation (2019)</strong>
+          <span>Faculty of Organizational Sciences</span>
+        </div>
+        <div class="minor">
+          <strong>Best Students of the Generation (2020)</strong>
+          <span>Faculty of Organizational Sciences</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="minor-grid">
+      <div>
+        <h2>Certificates</h2>
+        <div class="minor">
+          <strong>Certificate of completion - "Data Science" course</strong>
+          <span>2019</span>
+        </div>
+      </div>
+      <div>
+        <h2>Languages</h2>
+        <div class="minor">
+          <strong>Serbian</strong>
+          <span>Native or Bilingual Proficiency</span>
+        </div>
+        <div class="minor">
+          <strong>English</strong>
+          <span>Full Professional Proficiency</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
