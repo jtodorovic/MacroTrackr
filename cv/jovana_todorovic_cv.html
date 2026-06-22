@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jovana Todorovic CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --dark: #30394b;
+      --teal: #4a9ea1;
+      --teal-dark: #348a8d;
+      --text: #20242b;
+      --muted: #6f7680;
+      --chip: #9da4ad;
+      --line: #eff4f4;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: var(--text);
+      font-family: "Noto Sans", "Arimo", Arial, Helvetica, sans-serif;
+      font-size: 8.7pt;
+      line-height: 1.2;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #ffffff;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    .header {
+      position: relative;
+      padding-top: 7.3mm;
+    }
+
+    .portrait {
+      position: absolute;
+      top: 7.2mm;
+      left: 9.6mm;
+      z-index: 3;
+      width: 34.5mm;
+      height: 34.5mm;
+      border: 1.15mm solid var(--teal);
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name-block {
+      margin-left: 50.8mm;
+      margin-bottom: 3.2mm;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--dark);
+      font-size: 22.6pt;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: 0.15pt;
+    }
+
+    .role {
+      margin-top: 1.2mm;
+      color: var(--teal);
+      font-size: 11.7pt;
+      font-weight: 700;
+    }
+
+    .summary-band {
+      min-height: 22.8mm;
+      margin: 0 1.9mm;
+      padding: 3.8mm 10mm 4.7mm 49.8mm;
+      border-radius: 1.4mm 1.4mm 0 0;
+      background: var(--dark);
+      color: #ffffff;
+      font-size: 8.35pt;
+      line-height: 1.22;
+    }
+
+    .contact-band {
+      display: grid;
+      grid-template-columns: 72mm 1fr;
+      column-gap: 7mm;
+      row-gap: 2.1mm;
+      min-height: 23.2mm;
+      margin: 0 1.9mm;
+      padding: 3.5mm 10mm 3.4mm 13mm;
+      border-radius: 0 0 1.4mm 1.4mm;
+      background: var(--teal);
+      color: #ffffff;
+      font-size: 8.15pt;
+      font-weight: 600;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 2.4mm;
+      white-space: nowrap;
+    }
+
+    .contact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 4.1mm;
+      width: 4.1mm;
+      height: 4.1mm;
+      color: var(--teal);
+      border-radius: 50%;
+      background: #ffffff;
+      font-size: 7pt;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .contact-icon svg {
+      display: block;
+      width: 2.35mm;
+      height: 2.35mm;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    .contact-icon.fill svg {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .content {
+      padding: 7.2mm 8.8mm 12mm;
+    }
+
+    .content.page-two {
+      padding-top: 6.3mm;
+    }
+
+    section {
+      margin-bottom: 8.1mm;
+    }
+
+    section.compact-section {
+      margin-bottom: 7.1mm;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 3.2mm;
+      margin-bottom: 4.1mm;
+      color: var(--dark);
+    }
+
+    .section-title .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 8mm;
+      width: 8mm;
+      height: 8mm;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .section-title .icon svg {
+      display: block;
+      width: 4.4mm;
+      height: 4.4mm;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.9;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 15.8pt;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.25pt;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .section-title .rule {
+      flex: 1;
+      height: 1.25mm;
+      margin-left: 2.6mm;
+      border-radius: 1mm;
+      background: linear-gradient(90deg, var(--teal) 0 26%, var(--line) 77%, #ffffff 100%);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.45mm 1.35mm;
+      margin-left: 0.1mm;
+    }
+
+    .skill {
+      display: inline-block;
+      padding: 0.95mm 2.25mm 0.9mm;
+      border-radius: 1.25mm;
+      background: var(--chip);
+      color: #ffffff;
+      font-size: 7.15pt;
+      line-height: 1;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .experience {
+      margin-top: 0.3mm;
+    }
+
+    .job {
+      margin-bottom: 4.1mm;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      margin: 0;
+      color: #111111;
+      font-size: 12.1pt;
+      line-height: 1.08;
+      font-weight: 800;
+    }
+
+    .company {
+      margin-top: 0.3mm;
+      color: #111111;
+      font-size: 10.3pt;
+      line-height: 1.06;
+      font-weight: 500;
+    }
+
+    .date {
+      margin-top: 0.55mm;
+      color: var(--teal);
+      font-size: 7.75pt;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    ul {
+      margin: 1.15mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      position: relative;
+      margin: 0 0 0.78mm;
+      padding-left: 3.25mm;
+      font-size: 8.12pt;
+      line-height: 1.18;
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.7mm;
+      width: 1.45mm;
+      height: 1.45mm;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    strong {
+      font-weight: 800;
+    }
+
+    .education-list {
+      display: grid;
+      gap: 4.9mm;
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 1fr 26mm;
+      gap: 8mm;
+      align-items: start;
+    }
+
+    .institution {
+      margin-top: 0.3mm;
+      color: #111111;
+      font-size: 10pt;
+      font-weight: 500;
+    }
+
+    .gpa {
+      align-self: center;
+      justify-self: end;
+      color: var(--teal);
+      font-size: 8pt;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .project {
+      margin-bottom: 3.5mm;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-title {
+      margin: 0 0 0.9mm;
+      color: #20242b;
+      font-size: 10.2pt;
+      font-weight: 500;
+    }
+
+    .project-title strong {
+      font-weight: 700;
+    }
+
+    .project li {
+      margin-bottom: 0.42mm;
+      font-size: 7.62pt;
+      line-height: 1.16;
+    }
+
+    .project li::before {
+      top: 1.45mm;
+      width: 1.25mm;
+      height: 1.25mm;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24mm;
+      row-gap: 3.4mm;
+    }
+
+    .award strong,
+    .certificate strong,
+    .language strong {
+      display: block;
+      font-size: 9.75pt;
+      line-height: 1.12;
+      color: #20242b;
+    }
+
+    .award span,
+    .language span {
+      display: block;
+      margin-top: 0.15mm;
+      color: var(--muted);
+      font-size: 7.5pt;
+      font-style: italic;
+    }
+
+    .certificate strong {
+      font-weight: 500;
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: 36mm 1fr;
+      gap: 9mm;
+    }
+
+    .page-number {
+      position: absolute;
+      right: 9mm;
+      bottom: 6.7mm;
+      color: #858b92;
+      font-size: 8pt;
+      font-style: italic;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="portrait">
+        <img src="assets/extracted_image_1_3.jpeg" alt="Jovana Todorovic">
+      </div>
+      <div class="name-block">
+        <h1>Jovana Todorović</h1>
+        <div class="role">Senior software engineer</div>
+      </div>
+      <div class="summary-band">
+        Master of Information Systems graduate with 5.5 years of back-end engineering experience, specializing in distributed systems and microservices. Experienced in designing, developing, and operating production-grade services using Node.js, NestJS, Go, MongoDB, and PostgreSQL. Strong focus on scalability, reliability, observability, API design, and system ownership.
+      </div>
+      <div class="contact-band">
+        <div class="contact-item"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg></span><span>todorovicdrago1@gmail.com</span></div>
+        <div class="contact-item"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"></path></svg></span><span>+381631636842</span></div>
+        <div class="contact-item"><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5.2-8 12-8 12s-8-6.8-8-12a8 8 0 1 1 16 0z"></path><circle cx="12" cy="10" r="2.7"></circle></svg></span><span>Belgrade, Serbia</span></div>
+        <div class="contact-item"><span class="contact-icon fill" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.2 8.8h3.1V19H5.2V8.8Zm1.6-5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM10.2 8.8h3v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5V19h-3.1v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5h-3.1V8.8Z"></path></svg></span><span>linkedin.com/in/jovana-todorović-6233901b1</span></div>
+        <div class="contact-item"><span class="contact-icon fill" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.3-2.3-.3-4.7-1.2-4.7-5A3.9 3.9 0 0 1 6.6 9c-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"></path></svg></span><span>github.com/jtodorovic</span></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="compact-section">
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10"></path><path d="M18 7h2"></path><circle cx="16" cy="7" r="2"></circle><path d="M4 12h3"></path><path d="M11 12h9"></path><circle cx="9" cy="12" r="2"></circle><path d="M4 17h12"></path><path d="M20 17h0"></path><circle cx="18" cy="17" r="2"></circle></svg></span>
+          <h2>Skills</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="skills">
+          <span class="skill">JavaScript</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">Go</span>
+          <span class="skill">Python</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">NestJS</span>
+          <span class="skill">Gin</span>
+          <span class="skill">Express</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">MongoDB</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">Redis</span>
+          <span class="skill">DynamoDB</span>
+          <span class="skill">Mongoose</span>
+          <span class="skill">TypeORM</span>
+          <span class="skill">BullMQ</span>
+          <span class="skill">GraphQL</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">AWS ECS</span>
+          <span class="skill">AWS ECR</span>
+          <span class="skill">AWS Lambda</span>
+          <span class="skill">AWS CloudWatch</span>
+          <span class="skill">S3</span>
+          <span class="skill">MinIO</span>
+          <span class="skill">Azure Blob</span>
+          <span class="skill">Prometheus</span>
+          <span class="skill">Grafana</span>
+          <span class="skill">Loki</span>
+          <span class="skill">Sentry</span>
+          <span class="skill">JWT</span>
+          <span class="skill">Okta</span>
+          <span class="skill">Git</span>
+        </div>
+      </section>
+
+      <section class="experience">
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path><path d="M10 12v2h4v-2"></path></svg></span>
+          <h2>Work Experience</h2>
+          <span class="rule"></span>
+        </div>
+
+        <article class="job">
+          <h3>Senior back-end engineer</h3>
+          <div class="company">ThinkIT / Goin'</div>
+          <div class="date">09/2023 - Present</div>
+          <ul>
+            <li>Developed and maintained a <strong>Node.js</strong> microservices backend (6 services) supporting approximately 200k active users with high reliability and scalability.</li>
+            <li>Designed and implemented authentication and identity management features, including <strong>JWT-based authentication</strong>, social login providers (Google, Apple, Facebook, Microsoft Azure), <strong>Okta</strong> integration, email verification, phone verification, and SMS-based two-factor authentication (2FA).</li>
+            <li>Designed and implemented <strong>BullMQ</strong> background processing jobs for complex statistics, scheduled workloads, and asynchronous task execution.</li>
+            <li>Worked with <strong>AWS</strong> services, using <strong>AWS Lambda</strong> for notification delivery and <strong>Amazon SQS</strong> for asynchronous messaging.</li>
+            <li>Optimized <strong>MongoDB</strong> aggregations and scheduled workloads, significantly reducing execution time and database load.</li>
+            <li>Implemented observability using <strong>Prometheus, Grafana, Loki, and Sentry</strong>, including distributed tracing across microservices, enabling proactive monitoring, performance analysis, and faster incident response.</li>
+            <li>Built and maintained <strong>CI/CD pipelines</strong> using GitLab CI and <strong>Docker</strong>.</li>
+            <li>Delivered <strong>AI-powered</strong> chat automation and group content analytics features.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <h3>Back-end software engineer</h3>
+          <div class="company">Everseen d.o.o.</div>
+          <div class="date">01/2021 - 09/2023</div>
+          <ul>
+            <li>Developed and maintained the back-end architecture of a data-intensive web application using <strong>NestJS</strong>, focusing on efficient data handling and performance optimization.</li>
+            <li>Designed and implemented <strong>RESTful</strong> and <strong>GraphQL</strong> APIs as part of a microservices architecture.</li>
+            <li>Implemented complex database queries, ETLs and migrations in <strong>MongoDB</strong> and <strong>PostgreSQL</strong>, handling over 1 million documents without data loss.</li>
+            <li>Integrated third-party storage services such as <strong>MinIO S3</strong> and <strong>Azure Blob</strong>, for enhanced data management and scalability.</li>
+            <li>Monitored and optimized API calls, resulting in significant latency improvement.</li>
+            <li>Wrote unit tests using <strong>Jest</strong>.</li>
+            <li>Worked with containerized applications deployed on <strong>Kubernetes</strong>, assisting with deployment verification, troubleshooting, log analysis, and environment configuration.</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+    <div class="page-number">Page 1 of 2</div>
+  </main>
+
+  <main class="page">
+    <div class="content page-two">
+      <section>
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 8.5 9-4 9 4-9 4-9-4Z"></path><path d="M7 10.5v5c1.8 1.7 8.2 1.7 10 0v-5"></path><path d="M21 8.5v6"></path></svg></span>
+          <h2>Education</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="education-list">
+          <article class="education-item">
+            <div>
+              <h3>Master studies</h3>
+              <div class="institution">Faculty of Organizational Sciences, University of Belgrade</div>
+              <div class="date">10/2020 - 07/2022</div>
+            </div>
+            <div class="gpa">GPA: 10.00</div>
+          </article>
+          <article class="education-item">
+            <div>
+              <h3>Bachelor studies</h3>
+              <div class="institution">Faculty of Organizational Sciences, University of Belgrade</div>
+              <div class="date">10/2016 - 09/2020</div>
+            </div>
+            <div class="gpa">GPA: 9.86</div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.5"></circle><circle cx="18" cy="7" r="2.5"></circle><circle cx="12" cy="17" r="2.5"></circle><path d="M8.2 8.7 10.5 15"></path><path d="m15.8 8.7-2.3 6.3"></path><path d="M8.5 7h7"></path></svg></span>
+          <h2>Personal Projects</h2>
+          <span class="rule"></span>
+        </div>
+        <article class="project">
+          <div class="project-title">MacroTrackr <strong>(2025 - Present)</strong></div>
+          <ul>
+            <li>Designed and built a back-end service for tracking macros intake using <strong>Go (Gin framework)</strong>.</li>
+            <li>Containerized the application using <strong>Docker</strong> and deployed it to <strong>AWS ECS (Fargate)</strong>.</li>
+            <li>Integrated <strong>AWS</strong> services: <strong>ECR</strong> for container registry, <strong>CloudWatch</strong> for centralized logging, <strong>Lambda</strong> for serverless routes, and <strong>DynamoDB</strong> for scalable data storage.</li>
+            <li>Implemented a hybrid architecture combining REST endpoints with serverless functions.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-title">MacroTrackr-AI <strong>(2025)</strong></div>
+          <ul>
+            <li>Designed and implemented an AI-powered back-end service in <strong>Python</strong> using <strong>FastAPI</strong>.</li>
+            <li>Integrated and evaluated multiple open-source <strong>LLM models</strong>, benchmarking performance and response quality to identify the optimal model for CPU-only execution environments.</li>
+            <li>Implemented intelligent <strong>Redis-based caching</strong> for LLM responses to reduce repeated inference cost and improve response times.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-title">Multi-layer Neural Network Implementation <strong>(2025)</strong></div>
+          <ul>
+            <li>Implemented a custom <strong>multi-layer neural network</strong> from scratch; experimented with various hyperparameters including learning rate, number of layers, number of neurons per layer, and batch size.</li>
+            <li>Tested different <strong>activation functions</strong> (ReLU, Sigmoid, Tanh) and analyzed their impact on convergence and performance.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-title">Car Center <strong>(2020 - 2022)</strong></div>
+          <ul>
+            <li>Independently analyzed real-world documentation and workflows, translating business processes into a structured software system and domain model; designed the overall system architecture and relational database schema.</li>
+            <li>Implemented <strong>Node.js (Express)</strong> back-end and a hybrid front-end application using <strong>Angular</strong> and <strong>Ionic</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <div class="project-title">Geniefy - Travel Planner <strong>(2020)</strong></div>
+          <ul>
+            <li>Participated in end-to-end system design, including application architecture, data modeling, and feature definition for a startup concept application.</li>
+            <li>Designed and implemented a relational <strong>SQL</strong> database schema, ensuring data consistency and efficient querying.</li>
+            <li>Implemented <strong>Node.js (Express)</strong> back-end and a hybrid front-end application using <strong>Angular</strong> and <strong>Ionic</strong>.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v4a5 5 0 0 1-10 0V4Z"></path><path d="M7 6H4a3 3 0 0 0 3 5"></path><path d="M17 6h3a3 3 0 0 1-3 5"></path></svg></span>
+          <h2>Honor Awards</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="awards-grid">
+          <div class="award">
+            <strong>Best Students of the Generation (2017)</strong>
+            <span>Faculty of Organizational Sciences</span>
+          </div>
+          <div class="award">
+            <strong>Best Students of the Generation (2018)</strong>
+            <span>Faculty of Organizational Sciences</span>
+          </div>
+          <div class="award">
+            <strong>Best Students of the Generation (2019)</strong>
+            <span>Faculty of Organizational Sciences</span>
+          </div>
+          <div class="award">
+            <strong>Best Students of the Generation (2020)</strong>
+            <span>Faculty of Organizational Sciences</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8 8h8"></path><path d="M8 12h8"></path><path d="M8 16h5"></path><path d="m15 16 1.4 1.4L19 14.8"></path></svg></span>
+          <h2>Certificates</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="certificate">
+          <strong>Certificate of completion - „Data Science“ course (2019)</strong>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h10a4 4 0 0 1 0 8H9l-5 4V5Z"></path><path d="M13 13v1a4 4 0 0 0 4 4h1l2 2v-6a4 4 0 0 0-4-4h-1"></path></svg></span>
+          <h2>Languages</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="languages-grid">
+          <div class="language">
+            <strong>Serbian</strong>
+            <span>Native or Bilingual Proficiency</span>
+          </div>
+          <div class="language">
+            <strong>English</strong>
+            <span>Full Professional Proficiency</span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="page-number">Page 2 of 2</div>
+  </main>
+</body>
+</html>
